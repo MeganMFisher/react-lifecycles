@@ -31,6 +31,8 @@ class App extends Component {
   }
 
   shouldComponentUpdate(newProps, newState) {
+    // console.log(newProps, 'newProps') //any new props from parent
+    // console.log(newState, 'newState') //what new state is going to be
     console.log("shouldComponentUpdate: Should component update?");
 
     if (newState.count < 5) {
@@ -44,10 +46,14 @@ class App extends Component {
   }
 
   componentWillUpdate(newProps, newState) {
+    // console.log(newProps, 'newProps') //any new props from parent
+    // console.log(newState, 'newState') //what new state is going to be
     console.log('ComponentWillUpdate: Component is about to update')
   }
 
   componentDidUpdate(currentProps, currentState) {
+    // console.log(currentProps, 'currentProps') //any current props
+    // console.log(currentState, 'currentState') //what state currently is
     console.log('ComponentDidUpdate: Component just updated')
   }
 

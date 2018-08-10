@@ -57,7 +57,7 @@ export default class Number extends Component {
 
 
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
       // console.log(this.props) //What props currently is
       // console.log(nextProps, 'nextProps') //What props will be
       console.log("componentWillReceiveProps: Component will get new props!");
@@ -65,7 +65,15 @@ export default class Number extends Component {
           number: nextProps.number
       })
   }
+  //Using this lifecycle method often leads to bugs and inconsistencies, and for that reason it is going to be deprecated in the future.
+
+  // componentWillReceiveProps will be removed in version 17.0 but UNSAFE_componentWillReceiveProps will be kept.
+
+  // Invoked before a mounted component receives new props. 
+
   // We have access to both the next props (via nextProps), and our current props (via this.props). 
+
+  // React doesn’t call UNSAFE_componentWillReceiveProps() with initial props during mounting. It only calls this method if some of component’s props may update.
   
   // Most Common Use Case: Acting on particular prop changes to trigger state transitions. Can call setState.
   
@@ -110,11 +118,17 @@ export default class Number extends Component {
 
 
 
-  componentWillUpdate(newProps, newState) {
+  UNSAFE_componentWillUpdate(newProps, newState) {
     // console.log(newProps, 'newProps') //any new props from parent
     // console.log(newState, 'newState') //what new state is going to be
     console.log('ComponentWillUpdate: Component is about to update')
   }
+  // componentWillUpdate will be removed in version 17.0 but UNSAFE_componentWillUpdate will be kept.
+
+  // Invoked just before rendering when new props or state are being received. 
+
+  // UNSAFE_componentWillUpdate() will not be invoked if shouldComponentUpdate() returns false.
+
   // Used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate. Cannot call setState.
 
 
@@ -177,4 +191,7 @@ export default class Number extends Component {
       )
   }
   // The render() method is the only required method in a class component.
+
+  // The render() function should be pure, meaning that it does not modify component state, it returns the same result each time it’s invoked, and it does not directly interact with the browser.
+
 }

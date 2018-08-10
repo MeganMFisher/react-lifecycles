@@ -25,9 +25,13 @@ export default class Number extends Component {
 
 
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     console.log('ComponentWillMount: Component is about to mount')
   }
+  // componentWillMount will be removed in version 17.0 but UNSAFE_componentWillMount will be kept
+
+  // Invoked just before mounting occurs.
+
   // There is no component to play with yet, so you can’t do anything involving the DOM. Nothing has changed since your component’s constructor was called, which is where you should be setting up your component’s default configuration. 
   
   // Most Common Use Case: App configuration in your root component. Can call setState. Use default state instead.
@@ -89,8 +93,6 @@ export default class Number extends Component {
   shouldComponentUpdate(newProps, newState) {
     // console.log(newProps, 'newProps') //any new props from parent
     // console.log(newState, 'newState') //what new state is going to be
-
-
     console.log("shouldComponentUpdate: Should component update?");
 
     if (newState.number < 3) {
@@ -98,7 +100,7 @@ export default class Number extends Component {
       return true;
     } else {
       console.log("shouldComponentUpdate: Component should not update!");
-      // React.unmountComponentAtNode(document.getElementById('root'));
+      React.unmountComponentAtNode(document.getElementById('root'));
       return false;
     }
   }

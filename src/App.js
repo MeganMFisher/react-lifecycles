@@ -8,7 +8,8 @@ class App extends Component {
     super() 
 
     this.state = {
-      count: 0
+      count: 0,
+      error: ''
     }
 
     this.increase = this.increase.bind(this)
@@ -59,16 +60,17 @@ class App extends Component {
 
 
   render() {
+    if(this.state.error) return <div>ERRORS!</div>
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">React Lifecycle Hooks</h1>
         </header>
-          <Number number={this.state.count}/>
+          {this.state.count < 3 ? <Number number={this.state.count}/> : <div>you broke it</div> }
             <button onClick={this.increase}>
               +
-            </button>
+            </button> 
         
       </div>
     );

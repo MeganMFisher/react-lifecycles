@@ -26,7 +26,7 @@ export default class Number extends Component {
 
 
   UNSAFE_componentWillMount() {
-    console.log('ComponentWillMount: Component is about to mount')
+    console.log('Unsafe_ComponentWillMount: Component is about to mount')
   }
   // componentWillMount will be removed in version 17.0 but UNSAFE_componentWillMount will be kept
 
@@ -64,7 +64,7 @@ export default class Number extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
       // console.log(this.props) //What props currently is
       // console.log(nextProps, 'nextProps') //What props will be
-      console.log("componentWillReceiveProps: Component will get new props!");
+      console.log("unsafe_componentWillReceiveProps: Component will get new props!");
       this.setState({
           number: nextProps.number
       })
@@ -100,7 +100,7 @@ export default class Number extends Component {
       return true;
     } else {
       console.log("shouldComponentUpdate: Component should not update!");
-      React.unmountComponentAtNode(document.getElementById('root'));
+      // React.unmountComponentAtNode(document.getElementById('root'));
       return false;
     }
   }
@@ -123,7 +123,7 @@ export default class Number extends Component {
   UNSAFE_componentWillUpdate(newProps, newState) {
     // console.log(newProps, 'newProps') //any new props from parent
     // console.log(newState, 'newState') //what new state is going to be
-    console.log('ComponentWillUpdate: Component is about to update')
+    console.log('Unsafe_ComponentWillUpdate: Component is about to update')
   }
   // componentWillUpdate will be removed in version 17.0 but UNSAFE_componentWillUpdate will be kept.
 
@@ -187,9 +187,9 @@ export default class Number extends Component {
   render() {
     console.log('Render Number')
     return (
-      <div>
-              {this.props.number}
-          </div>
+        <div>
+          {this.props.number}
+        </div>
       )
   }
   // The render() method is the only required method in a class component.
